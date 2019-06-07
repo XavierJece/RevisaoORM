@@ -13,15 +13,13 @@ import javax.persistence.Table;
 @Entity 
 @Table(name = "tb_marca")
 public class Marca {
-    
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
-    
     @Column(nullable = false)
     private String Descricao;
     
-    @OneToMany(mappedBy = "marca", orphanRemoval = false, cascade = CascadeType.ALL)
-    private List<Carro> carro;
+    @OneToMany(mappedBy = "marca", orphanRemoval = false, cascade = CascadeType.PERSIST)
+   private List<Carro> carro;
 
     public List<Carro> getCarro() {
         return carro;

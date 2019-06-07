@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_marca")
+@Table(name = "tb_carro")
 public class Carro implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

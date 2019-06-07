@@ -20,7 +20,7 @@ public class TipoCarro {
     @Column(nullable = false)
     private String Descricao;
 
-    @OneToMany(mappedBy = "tipocarro", orphanRemoval = false, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipocarro", orphanRemoval = false, cascade = CascadeType.PERSIST)
     private List<Carro> carro;
 
     public List<Carro> getCarro() {

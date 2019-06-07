@@ -36,7 +36,7 @@ public class Principal {
         
         Funcionario f = new Funcionario();
         f.setCPF("545.825.000-66");
-        //f.setCargo(c);
+        f.setCargo(c);
         f.setEndereco("Rua Argentina...");
         f.setFone("25166-7070");
         f.setNome("Claudio 123 ");
@@ -45,24 +45,27 @@ public class Principal {
         Marca marca = new Marca();
         marca.setDescricao("Volks");
         
-        TipoCarro tipoC = new TipoCarro();
-        tipoC.setDescricao("Popular");
+        
+        TipoCarro tipoCarro = new TipoCarro();
+        tipoCarro.setDescricao("Popular");
         
         Carro carro = new Carro();
         carro.setMarca(marca);
-        carro.setTipocarro(tipoC);
-        //carro.setPlaca("BAR");
+        carro.setTipocarro(tipoCarro);
+        carro.setPlaca("BAR");
         carro.setDescricao("Uma bosta");
         
-        GenericDAO<Carro> genericDAOFun2 = new GenericDAO<Carro>();
-        GenericDAO<Marca> genericDAOFun3 = new GenericDAO<Marca>();
-        
+        GenericDAO<Carro> genericDAOCarro = new GenericDAO<Carro>();
+        //GenericDAO<Marca> genericDAOMarca = new GenericDAO<Marca>();
+        //GenericDAO<TipoCarro> genericDAOTipoCarro = new GenericDAO<TipoCarro>();
+                
         //GenericDAO<Cargo> genericDAOcargo = new GenericDAO<Cargo>();
         //GenericDAO<Funcionario> genericDAOFun = new GenericDAO<Funcionario>();
         
         //genericDAOcargo.salvar(c);
-        genericDAOFun3.salvar(marca);
-        genericDAOFun2.salvar(carro);
+        //genericDAOMarca.salvar(marca);
+        genericDAOCarro.salvar(carro);
+        //genericDAOTipoCarro.salvar(tipoCarro);
         
         /*List<Cargo> cargos;
         

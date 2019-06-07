@@ -8,8 +8,11 @@ package View;
 import Model.DAO.GenericDAO;
 import Model.DAO.connectionHibernate;
 import Model.VO.Cargo;
+import Model.VO.Carro;
 import Model.VO.Cliente;
 import Model.VO.Funcionario;
+import Model.VO.Marca;
+import Model.VO.TipoCarro;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -29,31 +32,45 @@ public class Principal {
         */
         
         Cargo c = new Cargo();
-        c.setCescricao("Professor");
+        c.setDescricao("Diretor");
         
         Funcionario f = new Funcionario();
-        f.setCPF("666.666.000-66");
-        f.setCargo(c);
+        f.setCPF("545.825.000-66");
+        //f.setCargo(c);
         f.setEndereco("Rua Argentina...");
-        f.setFone("6666-7070");
-        f.setNome("Vitoria Aladim ");
-        f.setRG("85.666.666-5");
+        f.setFone("25166-7070");
+        f.setNome("Claudio 123 ");
+        f.setRG("85.555.555-5");
         
+        Marca marca = new Marca();
+        marca.setDescricao("Volks");
         
+        TipoCarro tipoC = new TipoCarro();
+        tipoC.setDescricao("Popular");
         
-        GenericDAO<Cargo> genericDAOcargo = new GenericDAO<Cargo>();
+        Carro carro = new Carro();
+        carro.setMarca(marca);
+        carro.setTipocarro(tipoC);
+        //carro.setPlaca("BAR");
+        carro.setDescricao("Uma bosta");
+        
+        GenericDAO<Carro> genericDAOFun2 = new GenericDAO<Carro>();
+        GenericDAO<Marca> genericDAOFun3 = new GenericDAO<Marca>();
+        
+        //GenericDAO<Cargo> genericDAOcargo = new GenericDAO<Cargo>();
         //GenericDAO<Funcionario> genericDAOFun = new GenericDAO<Funcionario>();
         
         //genericDAOcargo.salvar(c);
-        //genericDAOFun.salvar(f);
+        genericDAOFun3.salvar(marca);
+        genericDAOFun2.salvar(carro);
         
-        List<Cargo> cargos;
+        /*List<Cargo> cargos;
         
         cargos = (List<Cargo> ) (genericDAOcargo.listTodos(c.getClass()));
         
         c = genericDAOcargo.listUm("codigo", 3L, c.getClass());
-        System.out.println("Cargo de id = "+  c.getCodigo() + " e de nome = " + c.getCescricao());
-        
+        System.out.println("Cargo de id = "+  c.getCodigo() + " e de nome = " + c.getDescricao());
+        */
                 
         /*for (int i = 0; i < cargos.size(); i++) {
             System.out.println("Cargo de id = "+  cargos.get(i).getCodigo() + " e de nome = " + cargos.get(i).getCescricao());

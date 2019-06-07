@@ -1,15 +1,36 @@
 package Model.VO;
 
-public class Carro {
+import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "tb_marca")
+public class Carro implements Serializable {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
-
+    
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "tipocarro", nullable = false, foreignKey = @ForeignKey(name = "tipocarro_fk"))
+    private TipoCarro tipocarro;
+    
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "marca", nullable = false, foreignKey = @ForeignKey(name = "marca_fk"))
     private Marca marca;
 
-    private TipoCarro tipocarro;
-
+    @Column(nullable = true)
     private String placa;
 
+    @Column(nullable = false)
     private String descricao;
 
     public Long getCodigo() {

@@ -41,11 +41,11 @@ public class Cargo {
         this.codigo = codigo;
     }
 
-    public String getCescricao() {
+    public String getDescricao() {
         return descricao;
     }
 
-    public void setCescricao(String cescricao) {
+    public void setDescricao(String cescricao) {
         this.descricao = cescricao;
     }
 

@@ -21,7 +21,7 @@ public class Cargo {
     @Column(nullable = false, unique = true)
     private String descricao;
     
-    @OneToMany(mappedBy = "cargo", orphanRemoval = false)
+    @OneToMany(mappedBy = "cargo", orphanRemoval = false, cascade = CascadeType.PERSIST)
     private List<Funcionario> funcionarios;
     
     

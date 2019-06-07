@@ -15,7 +15,7 @@ public interface iGenereicDAO<T> {
     
     void salvar(T objeto);
     
-    T listUm(String pkName, int pkValue, Class clazz);
+    T listUm(String pkName, Long pkValue, Class clazz);
     
     List listTodos(Class clazz);
     

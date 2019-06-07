@@ -30,8 +30,8 @@ public class GenericDAO<T> implements iGenereicDAO<T>{
     }
 
     @Override
-    public T listUm(String pkName, int pkValue, Class clazz) {
-        String jpql = "SELECT t FROM " + clazz.getTypeName() + "t WHERE t." + pkName + "=" + pkValue; //Posso colocar "SELECT t FROM TB_" + ..
+    public T listUm(String pkName, Long pkValue, Class clazz) {
+        String jpql = "SELECT t FROM " + clazz.getTypeName() + " t WHERE " + pkName + " = " + pkValue;
         Query query = this.manager.createQuery(jpql);
         Object obj = query.getSingleResult();
         return (T) obj;
@@ -39,17 +39,24 @@ public class GenericDAO<T> implements iGenereicDAO<T>{
 
     @Override
     public List listTodos(Class clazz) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String jpql = "SELECT t FROM " + clazz.getTypeName() + " t";
+        Query query = manager.createQuery(jpql); 
+        List<T> obj = query.getResultList();
+        return obj;
     }
 
     @Override
     public void atualizar(T  objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        manager.getTransaction().begin();
+        manager.merge(objeto);
+        manager.getTransaction().commit();
     }
 
     @Override
-    public void deletar(T objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deletar(T objeto){
+       manager.getTransaction().begin();
+       manager.remove(objeto);
+       manager.getTransaction().commit();
     }
     
 }
